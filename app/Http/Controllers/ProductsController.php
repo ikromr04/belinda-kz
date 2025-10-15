@@ -60,11 +60,11 @@ class ProductsController extends Controller
 
   public function show(Request $request)
   {
-    if ($request->agree == 'agree') {
+    if ($request->agreement == 'agree') {
       session()->put('aware', 'awared');
     }
     if (!session()->has('aware')) {
-      return redirect(route('products.attention'));
+      return redirect(route('products.attention', ['slug' => $request->slug]));
     }
 
     $data = Helper::getContents('products');

@@ -21,12 +21,14 @@
             @endforeach
           </select>
         </p>
-
+        @php
+          $nosId = request()->get('nosology');
+        @endphp
         <p class="products-filter__item">
           <select name="nosology">
             <option value="">Нозология</option>
             @foreach ($data['nosologies'] as $nosology)
-              <option value="{{ $nosology->id }}">{{ $nosology->title }}</option>
+              <option value="{{ $nosology->id }}" @if ($nosId == $nosology->id) selected @endif>{{ $nosology->title }}</option>
             @endforeach
           </select>
         </p>
@@ -46,13 +48,7 @@
         <p class="products-search__item">
           <label class="products-search__label" for="product-keyword">
             <span class="visually-hidden">Поиск продукта</span>
-            <input
-              class="products-search__input"
-              id="product-keyword"
-              type="search"
-              name="product-keyword"
-              placeholder="Поиск продукта"
-              autocomplete="off">
+            <input class="products-search__input" id="product-keyword" type="search" name="product-keyword" placeholder="Поиск продукта" autocomplete="off">
           </label>
         </p>
       </form>

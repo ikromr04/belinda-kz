@@ -4,16 +4,16 @@
       <dt>Сайты компании</dt>
 
       <dd>
-        <a href="https://cerebral.kz/">Церебрал®</a>
+        <a href="https://cerebral.kz/" target="_blank">Церебрал®</a>
       </dd>
       <dd>
-        <a href="https://ru.lambrotin.com/">Ламбротин®</a>
+        <a href="https://ru.lambrotin.com/" target="_blank">Ламбротин®</a>
       </dd>
       <dd>
-        <a href="https://ru.lindavit.com/">Линдавит®</a>
+        <a href="https://ru.lindavit.com/" target="_blank">Линдавит®</a>
       </dd>
       <dd>
-        <a href="https://ru.acemagnil.com/">Ацемагнил®</a>
+        <a href="https://ru.acemagnil.com/" target="_blank">Ацемагнил®</a>
       </dd>
     </div>
 
@@ -43,7 +43,7 @@
 
       @foreach ($app['popular-products'] as $product)
         <dd>
-          <a href="{{ route('products.show', $product->id) }}">{{ $product->title }}</a>
+          <a href="{{ route('products.show', $product->slug) }}">{{ $product->title }}</a>
         </dd>
       @endforeach
     </div>
@@ -53,16 +53,16 @@
 
       @foreach ($app['popular-categories'] as $category)
         <dd>
-          <a href="{{ route('products.index') }}">{{ $category->title }}</a>
+          <a href="{{ route('products.index') }}?nosology={{ $category->id }}">{{ $category->title }}</a>
         </dd>
       @endforeach
     </div>
-    <div class="footer-navigation-item">
+    {{-- <div class="footer-navigation-item">
       <dt>Новости и образ жизни</dt>
       @foreach ($app['newslifestyles'] as $newslifestyle)
         <dd><a href="{{ route('newslifestyle.show', $newslifestyle->slug) }}">{{ $newslifestyle->title }}</a></dd>
       @endforeach
-    </div>
+    </div> --}}
   </dl>
 
   <section class="contacts-card">

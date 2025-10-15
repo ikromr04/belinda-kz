@@ -5,6 +5,8 @@ const searchInput = document.querySelector('input[name="product-keyword"]');
 const productsWrapper = document.querySelector('.products-inner');
 const selects = document.querySelectorAll('select');
 
+const params = new URLSearchParams(window.location.search);
+
 const filter = {
   classification: '',
   nosology: '',
@@ -42,6 +44,10 @@ const filterProducts = () => {
   });
 };
 
+if (params.get('nosology')) {
+  filterProducts();
+}
+
 selects.forEach(select => {
   select.addEventListener('change', filterProducts);
 });
@@ -49,7 +55,6 @@ selects.forEach(select => {
 window.selectChangeHandler = () => {
   filterProducts();
 };
-
 
 const searchInputHandler = (evt) => {
   filter.page = 1;
